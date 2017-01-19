@@ -137,7 +137,7 @@ MinecraftForge.EVENT_BUS.register(new ChatItems());
 ----
 ====
 
-Your main file should now look like <<Main_File_After_Register>>.
+De main file moet er nu uitzien als <<Main_File_After_Register>>.
 
 [[Main_File_After_Register]]
 .Main file after registering Chat Items
@@ -178,7 +178,7 @@ Als Ctrl+Spatie gebruikt kan je zien welke items je allemaal kunt selecteren.
 
 === Different Items
 
-Produce different items for different chat text
+Geef de speler verschillende items, als er verschillende dingen worden geschreven in de chat.
 
 [[Different_Chat_Items_Code]]
 .Different Chat Items code
@@ -200,7 +200,8 @@ public void giveItems(ServerChatEvent event){
 
 === Multiple Items
 
-Produce multiple items for chat text
+
+Geeft meerdere items voor één woord in chat text
 
 [[Multiple_Chat_Items_Code]]
 .Multiple Chat Items code
@@ -209,7 +210,7 @@ Produce multiple items for chat text
 ----
 @SubscribeEvent
 public void giveItems(ServerChatEvent event){
-	if (event.getMessage().contains("potato")) {
+	if (event.getMessage().contains("aardappel")) {
 		event.getPlayer().inventory.addItemStackToInventory(new ItemStack(Items.potato, 64));
 		event.getPlayer().inventory.addItemStackToInventory(new ItemStack(Items.diamond, 64));
 	}
@@ -363,8 +364,8 @@ MinecraftForge.EVENT_BUS.register(new CreeperSpawnAlert());
 
 **Gameplay:**
 
-. Make sure you are not on peaceful mode.
-. Set the time to night time ("/time set night") 
+. Zorg ervoor dat je niet op vredig aan het spelen bent.
+. Stel de tijd in, zodat het nacht is ("/time set night") 
 
 You should get a bunch of messages saying "A creeper has spawned!" in light green letters. One of these messages is sent to you every time a creeper spawns.
 
