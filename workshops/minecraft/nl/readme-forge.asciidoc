@@ -62,7 +62,7 @@ Dit is een zeer belangrijke stap, hiermee kan je controleren of je echt kunt beg
 [[Main_File]]
 == Het hoofdbestand genaamd `Main File`
 
-Om te kunnen beginnen met het maken va neen mod, hebben we een `main file` nodig. Dit bestand zorgt er voor dat al onze mods worden geregistreerd en uitgevoerd kunnen worden in Minecraft.
+Om te kunnen beginnen met het maken van een mod, hebben we een `main file` nodig. Dit bestand zorgt er voor dat al onze mods worden geregistreerd en uitgevoerd kunnen worden in Minecraft.
 Maar voordat we dat kunnen doen moeten we een `package` maken. Klik eerst op het pijltje links van de folder "`MDKExample`". klik nu met je rechter muisknop op "src/main/java" en kies daar voor `New > Package`. Geef het de naam `org.devoxx4kids.forge.mods`.
 
 We moeten een nieuwe `class` maken in dit pakket. Om dit te doen klik je met je rechter muisknop op het nieuwe package wat je zojuist hebt gemaakt. Kies nu voor `New > Class`, noem dit bestand `MainMod`. In het midden van het scherm zie je nu de code van dit bestand. Vervang alle code voor de code in <<Setting_Up_The_Main_File>>.
@@ -173,7 +173,7 @@ Zodra je klaar bent met het bewerken van de bestanden, klik je op de groene knop
 
 === Change text/item
 
-Verander de woorden die je gebruikt om een item te krijgen naar iets anders. Verander ``aardappel'' naar ``diamand'' en verander het item wat je krijgt naar ``diamond''. Let goed op het verschil tussen Nederlands en Engels.
+Verander de woorden die je gebruikt om een item te krijgen naar iets anders. Verander ``aardappel'' naar ``diamant'' en verander het item wat je krijgt naar ``diamond''. Let goed op het verschil tussen Nederlands en Engels.
 Als Ctrl+Spatie gebruikt kan je zien welke items je allemaal kunt selecteren.
 
 === Different Items
@@ -191,7 +191,7 @@ public void giveItems(ServerChatEvent event){
 		event.getPlayer().inventory.addItemStackToInventory(new ItemStack(Items.potato, 64));
 	}
 
-	if (event.getMessage().contains("diamond")) {
+	if (event.getMessage().contains("diamant")) {
 		event.getPlayer().inventory.addItemStackToInventory(new ItemStack(Items.diamond, 64));
 	}
 }
