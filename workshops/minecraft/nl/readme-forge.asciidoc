@@ -198,10 +198,9 @@ public void giveItems(ServerChatEvent event){
 ----
 ====
 
-=== Multiple Items
+=== Meerdere Items
 
-
-Geeft meerdere items voor één woord in chat text
+Geeft meerdere items met één woord in chat text
 
 [[Multiple_Chat_Items_Code]]
 .Multiple Chat Items code
@@ -221,9 +220,9 @@ public void giveItems(ServerChatEvent event){
 [[Dragon_Spawner]]
 == Ender Dragon Spawner
 
-**Purpose:** To spawn an Ender Dragon every time a player places a Dragon Egg block.
+**Doel:** Om een Ender Dragon te spawnen iedere keer als de speler een Endor Dragon ei blok plaatst.
 
-**Instructions:** In the package `org.devoxx4kids.forge.mods`, make a new class called `DragonSpawner` and replace its code with the code shown in <<Dragon_Spawner_Code>>.
+**Instructies:**  In het package `org.devoxx4kids.forge.mods`, maak een nieuwe klasse met de naam `DragonSpawner` en vervang de code met de code zoals, in: <<Dragon_Spawner_Code>>.
 
 [[Dragon_Spawner_Code]]
 .Dragon Spawner code
@@ -255,7 +254,7 @@ public class DragonSpawner {
 ----
 ====
 
-Then, register it like you did with Chat Items, but use the line of code shown in <<Dragon_Spawner_Registering>>.
+Daarna, registreer je deze class net zoals je dat hebt gedaan met Chat Items, gebruik de code zoals we laten zien in <<Dragon_Spawner_Registering>>.
 
 [[Dragon_Spawner_Registering]]
 .Dragon Spawner registering
@@ -268,16 +267,16 @@ MinecraftForge.EVENT_BUS.register(new DragonSpawner());
 
 **Gameplay:**
 
-. Use the command "/give <your player name> dragon_egg" to give yourself a dragon egg
-. Place down the dragon egg, and an Ender Dragon should spawn
+. Gebruik het commando "/give <jouw spelers naam> dragon_egg" om je zelf een dragon egg te geven.
+. Plaats nu het dragon egg, en er moet een Ender Dragon verschijnen.
 
-The player name will not be your normal player name, it will be a Forge-generated player name. Check your chat window to see what your player name is.
+De spelers naam is niet je normale spelers naam, de naam is automatisch aangemaakt door Forge. Kijk in je chat scherm wat jouw spelers naam is.
+Let op: Het kan zijn dat je een foutmelding krijgt 'You don't have permissions to perform the command`". De reden dat hij zegt dat je geen permissies hebt om dit commando uit te voeren is omdat je geen cheats hebt aangezet in deze wereld. Wanneer je een wereld aanmaakt is er een box waar staat dat je in "`Survival`" mode bent. Klik op deze box totdat er staat "`Creative`" mode. Deze modus zal automatisch cheats toestaan in je nieuw aangemaakte wereld. Je moet hier een nieuwe wereld voor aanmaken.
 
-NOTE: You may get the error "`You don't have permissions to perform the command`". The reason it says that you don't have permission to run the command is because you don't have cheats enabled in your world. When you are creating a world, there will be a box that says you are in "`Survival`" mode. Click on the box until it says "`Creative`" mode, which will automatically enable cheats. Then, create the rest of the world normally. You will need to create a new world for this.
+=== Verander block/entity
 
-=== Change block/entity
-
-Change block that triggers spawning and spawn a different item. For example change the block to `sponge` and entity to `EntitySquid`. Use Ctrl+Space to show the list of items.
+Verander het block wat er voor zorgt dat een item wordt gespawned. Als voorbeeld verander het naar `sponge` en de enititeit naar `EntitySquid`.
+Gebruik Ctrl+Spatie om een lijst van items te laten zien.
 
 .Spawn squid
 ====
@@ -292,7 +291,7 @@ if (event.getPlacedBlock() == Blocks.sponge.getBlockState().getBaseState()) {
 ----
 ====
 
-After doing this, press Control + Shift + O on a Windows computer or Cmd + Shift + O on a Mac computer to import certain classes and fix some errors. When you test out this mod, place down a Wet Sponge, not a Sponge.
+Nadat je dit hebt gedaan druk dan op windows op Control + Shift + O op mac klik je op Cmd + Shift + O om bepaalde classes te importeren en om bepaalde fouten op te lossen. Als je deze mod test, plaats dan een Wet Sponge (natte spons), geen normale.
 
 === Change offset of entities
 
@@ -309,9 +308,9 @@ dragon.setLocationAndAngles(event.getPos().getX() + 5, event.getPos().getY(), ev
 [[Creeper_Alert]]
 == Creeper Spawn Alert
 
-**Purpose:** To alert all players when a creeper spawns.
+**Doel:** Om alle spelers te informeren dat er een Creeper gespawned is.
 
-**Instructions:** In your package, make a new class called `CreeperSpawnAlert`. Replace its contents with <<Creeper_Spawn_Code>>.
+**Instructies:** Maak in je Package een nieuwe class met de naam `CreeperSpawnAlert`. Vervang de inhoud met wat er staat in <<Creeper_Spawn_Code>>.
 
 [[Creeper_Spawn_Code]]
 .Creeper Spawn Alert code
@@ -343,7 +342,7 @@ public class CreeperSpawnAlert {
 		for (int i = 0; i < players.size(); i++) {
 			EntityPlayer player = (EntityPlayer) players.get(i);
 			if (event.getWorld().isRemote) {
-				player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "A creeper has spawned!"));
+				player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Er is een Creeper verschenen!"));
 			}
 		}
 	}
@@ -351,7 +350,7 @@ public class CreeperSpawnAlert {
 ----
 ====
 
-Register it using the line in <<Creeper_Spawn_Registering>>.
+Registreer het door gebruik te maken van de regel in <<Creeper_Spawn_Registering>>.
 
 [[Creeper_Spawn_Registering]]
 .Creeper Spawn Alert registering
@@ -367,21 +366,22 @@ MinecraftForge.EVENT_BUS.register(new CreeperSpawnAlert());
 . Zorg ervoor dat je niet op vredig aan het spelen bent.
 . Stel de tijd in, zodat het nacht is ("/time set night") 
 
-You should get a bunch of messages saying "A creeper has spawned!" in light green letters. One of these messages is sent to you every time a creeper spawns.
+Je moet in licht groene letters een aantal meldingen krijgen, waar staat "Er is een Creep gespawned!"
+Iedere keer als er een Creeper verschijnt krijg je het bericht te zien.
 
-=== Change color/format of message
+=== Verander de kleur en de opmaak van het bericht
 
-==== Change color to red
+==== Verander de kleur naar rood
 
 .Color of message
 ====
 [source,java]
 ----
-player.addChatComponentMessage(new TextComponentString(TextFormatting.RED + "A creeper has spawned!"));
+player.addChatComponentMessage(new TextComponentString(TextFormatting.RED + "Er is een Creeper verschenen!"));
 ----
 ====
 
-Try different colors by code completion after `EnumChatFormatting`.
+Probeer verschillende kleuren te gebruiken door gebruik te maken van, code completion na `EnumChatFormatting`.
 
 ==== Change style to italics
 
@@ -389,11 +389,11 @@ Try different colors by code completion after `EnumChatFormatting`.
 ====
 [source,java]
 ----
-player.addChatComponentMessage(new TextComponentString(TextFormatting.ITALIC + "A creeper has spawned!"));
+player.addChatComponentMessage(new TextComponentString(TextFormatting.ITALIC + "Er is een Creeper verschenen!"));
 ----
 ====
 
-Try different styles by code completion after `EnumChatFormatting`.
+Probeer verschillende stijlen met code completion na `EnumChatFormatting`.
 
 === Change text of message
 
@@ -401,13 +401,13 @@ Try different styles by code completion after `EnumChatFormatting`.
 ====
 [source,java]
 ----
-player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Run away, a creeper has spawned!"));
+player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Ren weg, er is een Creeper verschenen!"));
 ----
 ====
 
-Talk about text within quotes.
+Pratend over text in quotes.
 
-=== Print same message for different mobs
+=== Print dezelfde boodschap voor verschillende mobs
 
 .Same message for differet mobs using AND
 ====
@@ -465,7 +465,7 @@ public void sendAlert(EntityJoinWorldEvent event) {
 ----
 ====
 
-=== Print message for all mobs
+=== Print bericht voor alle mobs
 
 .Message for all mobs
 ====
@@ -477,14 +477,14 @@ if (!(event.getEntity() instanceof EntityMob)) {
 ----
 ====
 
-Explain how to reach `EntityMob`.
+Leg uit hoe `EntityMob` te bereiken.
 
 [[Sharp_Snowballs]]
-== Sharp Snowballs
+== Scherpe sneeuwballen
 
-**Purpose:** To turn all snowballs into arrows so that they can hurt entities.
+**Doel:** Om alle sneeuwballen te veranderen in pijlen zodat ze de entiteiten kunnen verwonden.
 
-**Instructions:** In your package, create a new class called `SharpSnowballs`. Replace its code with <<Snowballs_Code>>.
+**Instructies:** In je package creeer je een nieuwe class met de naam `SharpSnowballs`. Vervang de code met die in <<Snowballs_Code>>.
 
 [[Snowballs_Code]]
 .Sharp Snowballs code
@@ -519,8 +519,8 @@ public class SharpSnowballs {
 			arrow.motionY = snowball.motionY;
 			arrow.motionZ = snowball.motionZ;
 
-			// gets arrow out of player's head
-			// gets the angle of arrow right, in the direction of motion
+			// Haal pijl uit spelers hoofgd
+			// Maakt de hoek van de pijl goed, deze moet richten in de richting waarin je beweegt.
 			arrow.posX += arrow.motionX;
 			arrow.posY += arrow.motionY;
 			arrow.posZ += arrow.motionZ;
@@ -533,7 +533,7 @@ public class SharpSnowballs {
 ----
 ====
 
-Register the new class using the line in <<Snowballs_Registering>>.
+Registreer de nieuwe Class door gebruik te maken van de regel in <<Snowballs_Registering>>.
 
 [[Snowballs_Registering]]
 .Sharp Snowballs registering
@@ -546,18 +546,17 @@ MinecraftForge.EVENT_BUS.register(new SharpSnowballs());
 
 **Gameplay:**
 
-. Get a Snowball item from your inventory
-. Right click with it to throw it
-. It should turn into an arrow
+. Pak een sneeuwbal uit je inventory
+. Klik met de rechtermuis knop om de sneeuwbal te gooien
+. Deze zou nu moeten veranderen in een sneeuwbal
 
-You can also spawn Snow Golems by placing a pumpkin on top of a tower of two Snow blocks. The Snow Golem will act as a turret, shooting out snowballs that turn into arrows.
+Je kan ook Snow Golems spawnen door een pompoen boven op een toren van twee sneeuwblokken te plaatsen. De Snow Golem gedraagt zich als een turret en zal sneeuwballen uitschieten die veranderen in pijlen.
 
-Tip: spawn a Zombie or two for the Snow Golems to shoot.
+Tip: spawn een Zombie of twee voor de Snow Golems om op te schieten.
 
-=== Explosive snowballs
+=== Explosieve sneeuwballen
 
-Replace `EntityArrow arrow = new EntityArrow(world);` line with the
-code shown in <<Explosive_Snowballs_Code>>.
+Vervang `EntityArrow arrow = new EntityArrow(world);` regel met de code zoals deze staat in <<Explosive_Snowballs_Code>>.
 
 [[Explosive_Snowballs_Code]]
 .Explosive Snowballs code
@@ -572,11 +571,11 @@ arrow.setFuse(80);
 [[OP_Golems]]
 == Overpowered Iron Golems
 
-**Purpose:** To add helpful potion effects to Iron Golems when they spawn in the world.
+**Doel:** Om nuttige potion effecten toe te voegen aan de Iron Golem als deze spawend in de wereld.
 
-**Instructions:**
+**Instructies:**
 
-In your package, make a new class called `OverpoweredIronGolems` and replace its contents with <<Iron_Golems_Code>>.
+In je package, maak je een nieuwe Class met de naam `OverpoweredIronGolems` en vervang de code met de code zoals je deze vindt in <<Iron_Golems_Code>>.
 
 [[Iron_Golems_Code]]
 .Overpowered Iron Golems code
@@ -610,7 +609,7 @@ public class OverpoweredIronGolems {
 ----
 ====
 
-Then, register the class using the line shown in <<Iron_Golems_Register>>.
+Registreer daarna de Class door gebruik te maken van de regel zoals deze staat in <<Iron_Golems_Register>>.
 
 [[Iron_Golems_Register]]
 ====
@@ -622,17 +621,17 @@ MinecraftForge.EVENT_BUS.register(new OverpoweredIronGolems());
 
 **Gameplay:**
 
-. Spawn an Iron Golem by using the command "/summon VillagerGolem".
-. Spawn some hostile mobs near the Iron Golem
+. Spawn een Iron Golem door het commando "/summon VillagerGolem" te typen.
+. Spawn ook een paar vijandige mobs in de buurt van de Iron Golem.
 
-The golem should move towards them to kill them. Normally, Iron Golems move slowly, but with the speed effect from the mod, they should move very fast.
+De Golem moet zich nu verplaatsen naar de vijandige mobs en ze aanvallen. Normaal, verplaatsen Iron Golems zich heel langzaam. Maar met het snelheids effect van deze mod, moeten ze zich heel erg snel verplaatsen.
 
 [[Rain_Water]]
-== Rain Water
+== Regen Water
 
-**Purpose:** To place water at the feet of entities when it is raining.
+**Doel:** Om water te laten verschijnen bij de entiteiten wanneer het gaat regenen.
 
-**Instructions:** In your package, create a new class called `RainWater` and replace its contents with <<Rain_Code>>.
+**Instructies:** In je package maak je een nieuwe Class aan met de naam `RainWater` en vervang de inhoud met de code die je kan vinden in <<Rain_Code>>.
 
 [[Rain_Code]]
 .Rain Water code
@@ -678,7 +677,7 @@ public class RainWater {
 ----
 ====
 
-Then, register it using the line shown in <<Rain_Registering>>.
+Daarna, registreer je deze met de regel zoals deze is te vinden in <<Rain_Registering>>.
 
 [[Rain_Registering]]
 .Rain Water registering
@@ -691,14 +690,14 @@ MinecraftForge.EVENT_BUS.register(new RainWater());
 
 **Gameplay:**
 
-. Use the command "/weather rain" to make the weather rainy
-. Start moving, and water should be placed wherever you go, but it will disappear quickly
+. Gebruik het commando "/weather rain" om het te laten regenen.
+. Begin te lopen, nu moet er overal waar je hebt gelopen water verschijnen, maar het zal snel verdwijnen.
 
-=== TNT Thunder
+=== TNT Onweer
 
-**Purpose**: Spawn a TNT with fuse at a random duration wherever an entity is walking
+**Doel**: Spawn een aangestoken TNT met verschillende (random) lengte lont, daar waar een entiteit heeft gelopen.
 
-**Instructions**: Add the following method in `RainWater` class:
+**Instructies**: Voeg de volgende method TOE aan de Class `RainWater`:
 
 [[TNT_Thunder]]
 .TNT Thunder Code
@@ -755,9 +754,11 @@ public class RainWater {
 
 **Gameplay:**
 
-. Use the command "/weather thunder" to make the weather stormy
-. Spawn a mob in the world, watch for TNT to be placed wherever the
-  mob goes. The TNT will blow up after 4 seconds.
+. Gebruik het commando "/weather thunder" Om het te laten onweren
+. Spawn een mob in de wereld, let op of je TNT geplaats ziet worden daar waar de mob naar toe gaat. De TNT moet na 4 seconde ontploffen.
+
+Deze laatste opdrachten zijn niet vertaald naar het Nederlands. Ben benieuwd of dit ook lukt!
+Eigenlijk is het niet heel erg veel anders als wat hierboven staat. Mocht dat toch te lastig zijn, vraag dan even om hulp.
 
 [[Wall_Climber]]
 == Wall Climber
